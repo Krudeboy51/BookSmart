@@ -63,9 +63,9 @@ public class LoginActivity extends Activity {
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            //Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
-            //startActivity(intent);
-            //finish();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         // Login button Click Event
@@ -143,10 +143,10 @@ public class LoginActivity extends Activity {
                         db.addUser(name, email, uid, created_at);
 
                         // Launch main activity
-                       // Intent intent = new Intent(LoginActivity.this,
-                       //         Main2Activity.class);
-                       // startActivity(intent);
-                      //  finish();
+                        Intent intent = new Intent(LoginActivity.this,
+                                MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
                         // Error in login. Get the error message
                         String errorMsg = jObj.getString("error_msg");
