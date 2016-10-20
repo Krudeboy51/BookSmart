@@ -9,4 +9,7 @@ public class AppConfig {
 
     // Server user register url
     public static String URL_REGISTER = "http://mrkking.com/badman/php/Register.php";
+
+    //Server Password Change
+    public static String URL_CHANGEPASSWORD = "http://mrkking.com/badman/php/changePass.php";
 }
