@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 import FragmentsPKG.BrowseFragment;
+import FragmentsPKG.CreatePostFragment;
 import FragmentsPKG.MyPostFragment;
 import FragmentsPKG.Settings;
 import helper.SQLiteHandler;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.flContent, new CreatePostFragment().newInstance()).commit();
         initNavigationDrawer();
 
         tv_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tv_name);
@@ -64,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         tv_name.setText("Welcome " + name + "!");
 
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.flContent, new BrowseFragment().newInstance()).commit();
+
     }
 
     public void initNavigationDrawer() {
@@ -90,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.my_settings:
                         fragClass = Settings.class;
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.create_post:
+                        fragClass = CreatePostFragment.class;
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.sign_out:
