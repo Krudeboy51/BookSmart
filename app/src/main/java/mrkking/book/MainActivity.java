@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         String email = user.get("email");
 
         tv_name.setText("Welcome " + name + "!");
+
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.flContent, new BrowseFragment().newInstance()).commit();
     }
 
     public void initNavigationDrawer() {
@@ -114,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         });
         View header = navigationView.getHeaderView(0);
         TextView tv_email = (TextView)header.findViewById(R.id.tv_name);
-        tv_email.setText("raj.amalw@learn2crack.com");
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
