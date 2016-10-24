@@ -22,4 +22,12 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
+    <string-array name="conditions_array">
+        <item>Mint</item>
+        <item>Good</item>
+        <item>Fair</item>
+        <item>Slightly Fair</item>
+        <item>Poor</item>
+    </string-array>
+
 </resources>

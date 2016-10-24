@@ -42,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.flContent, new CreatePostFragment().newInstance()).commit();
         initNavigationDrawer();
-
         tv_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tv_name);
 
 
@@ -121,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
         View header = navigationView.getHeaderView(0);
         TextView tv_email = (TextView)header.findViewById(R.id.tv_name);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
@@ -141,6 +139,13 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.flContent, new CreatePostFragment().newInstance()).commit();
+    }
+
     private void logoutUser() {
         session.setLogin(false);
 
@@ -152,4 +157,10 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.flContent, new CreatePostFragment().newInstance()).commit();
+    }
 }
