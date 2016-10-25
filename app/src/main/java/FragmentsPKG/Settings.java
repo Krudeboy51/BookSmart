@@ -45,7 +45,6 @@ public class Settings extends Fragment {
     private ImageView profIMG;
     private EditText opass, npass;
     private Button submit;
-    NavigationView navigationView;
     private SQLiteHandler db;
     private SessionManager session;
 
@@ -102,8 +101,7 @@ public class Settings extends Fragment {
                     // Check for error node in json
                     if (!error) {
                         String errorMsg = "Success";
-                        Toast.makeText(getContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), errorMsg, Toast.LENGTH_LONG).show();
                     } else {
                         // Error in login. Get the error message
                         String errorMsg = jObj.getString("error_msg");

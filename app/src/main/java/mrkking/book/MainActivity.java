@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     private SQLiteHandler db;
     private SessionManager session;
+    private Fragment frag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initNavigationDrawer();
         tv_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tv_name);
-
+        frag = new BrowseFragment().newInstance();
 
         // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int id = menuItem.getItemId();
 
-                Fragment frag = null;
+                frag = null;
                 Class fragClass = BrowseFragment.class;
                 switch (id) {
                     case R.id.browse:
@@ -159,8 +160,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        Toast.makeText(this, "MAIN ON RESUME",
+                Toast.LENGTH_LONG).show();
         super.onResume();
         FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.flContent, new CreatePostFragment().newInstance()).commit();
+        fm.beginTransaction().replace(R.id.flContent, frag).commit();
     }
+
 }

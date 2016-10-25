@@ -19,5 +19,8 @@ public class AppConfig {
     //Server Add New Post
     public static String URL_ADD_POST = URL_BASE+"createpost.php";
 
+    //Get Post List From Server
+    public static String URL_GET_ALL_POST="http://mrkking.com/badman/php/postlist.php";
+
 
 }

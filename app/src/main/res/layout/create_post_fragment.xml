@@ -2,66 +2,94 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@color/btn_login">
 
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/postf_image"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:maxWidth="75dp"
+            android:maxLines="1"
+            android:id="@+id/postf_title"
+            android:hint="title:"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="75dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"/>
 
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxWidth="75dp"
+            android:hint="isbn:"
+            android:maxLines="1"
+            android:id="@+id/postf_isbn"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxWidth="75dp"
-                android:maxLines="1"
-                android:id="@+id/postf_title"
-                android:hint="title:"
-                android:imeOptions="actionNext|flagNoEnterAction"/>
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxWidth="75dp"
-                android:hint="isbn:"
-                android:maxLines="1"
-                android:id="@+id/postf_isbn"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:weightSum="4"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:weightSum="4"
-            android:layout_marginBottom="20dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="Condition: "
-                android:textAlignment="viewStart"/>
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_weight="3"
-                android:id="@+id/postf_spinner"
-                android:entries="@array/conditions_array"/>
-        </LinearLayout>
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:text="Condition: "
+            android:textAlignment="viewStart"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="3"
+            android:id="@+id/postf_spinner"
+            android:entries="@array/conditions_array"
 
-        <Button
-            android:id="@+id/postf_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Submit"
-            android:textColor="@color/btn_login"
-            android:background="@color/btn_login_bg"/>
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint"/>
     </LinearLayout>
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_menu_camera"
+        android:id="@+id/postf_image"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:textColor="@color/input_login"
+        android:textColorHint="@color/input_login_hint"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_menu_camera"
+        android:id="@+id/postf_image2"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:textColor="@color/input_login"
+        android:textColorHint="@color/input_login_hint" />
+
+    <Button
+        android:id="@+id/postf_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Submit"
+        android:textColor="@color/btn_login"
+        android:background="@color/btn_login_bg"/>
+
+
 </LinearLayout>
