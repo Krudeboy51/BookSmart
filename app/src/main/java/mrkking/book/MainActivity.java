@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initNavigationDrawer();
         tv_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tv_name);
-        frag = new BrowseFragment().newInstance();
+        frag = new BrowseFragment();
 
         // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
@@ -77,24 +77,20 @@ public class MainActivity extends AppCompatActivity {
 
                 int id = menuItem.getItemId();
 
-                frag = null;
-                Class fragClass = BrowseFragment.class;
+                frag = new BrowseFragment();
+
                 switch (id) {
                     case R.id.browse:
-                        fragClass = BrowseFragment.class;
-                        drawerLayout.closeDrawers();
+                        frag = new BrowseFragment();
                         break;
                     case R.id.my_posts:
-                        fragClass = MyPostFragment.class;
-                        drawerLayout.closeDrawers();
+                        frag = new MyPostFragment();
                         break;
                     case R.id.my_settings:
-                        fragClass = Settings.class;
-                        drawerLayout.closeDrawers();
+                        frag = new Settings();
                         break;
                     case R.id.create_post:
-                        fragClass = CreatePostFragment.class;
-                        drawerLayout.closeDrawers();
+                        frag = new CreatePostFragment();
                         break;
                     case R.id.sign_out:
                         logoutUser();
@@ -102,20 +98,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     default:
-                        fragClass = BrowseFragment.class;
-                        drawerLayout.closeDrawers();
+
                         break;
                 }
+                drawerLayout.closeDrawers();
 
-                try {
-                    frag = (Fragment) fragClass.newInstance();
-                    FragmentManager fm = getSupportFragmentManager();
-                    fm.beginTransaction().replace(R.id.flContent, frag).commit();
-                }catch (InstantiationException e){
-                    e.printStackTrace();
-                }catch (IllegalAccessException e){
-                    e.printStackTrace();
-                }
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.flContent, frag).commit();
+
                 return true;
             }
         });
@@ -140,12 +130,6 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.flContent, new CreatePostFragment().newInstance()).commit();
-    }
 
     private void logoutUser() {
         session.setLogin(false);
@@ -160,8 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Toast.makeText(this, "MAIN ON RESUME",
-                Toast.LENGTH_LONG).show();
+
         super.onResume();
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.flContent, frag).commit();

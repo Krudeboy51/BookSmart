@@ -1,5 +1,6 @@
 package FragmentsPKG;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,19 +33,10 @@ import mrkking.book.R;
  */
 public class BrowseFragment extends Fragment {
 
-    public static String TAG = "Browse Fragment";
     private ListView lv;
 
     private void init(View v){
         lv = (ListView) v.findViewById(R.id.lv_browse);
-    }
-    public static BrowseFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        BrowseFragment fragment = new BrowseFragment();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Nullable
